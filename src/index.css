@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0D0E12;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #FAF7F2;
+    background-color: #0D0E12;
+    letter-spacing: -0.015em;
+    overflow: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+}
+
+.font-serif {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Subtle editorial grain overlay on dark base */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Hairline dividers for dark obsidian canvas */
+.hairline-b {
+  border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(250, 247, 242, 0.08);
+}
+
+.hairline-r {
+  border-right: 1px solid rgba(250, 247, 242, 0.08);
+}
+
+.hairline-l {
+  border-left: 1px solid rgba(250, 247, 242, 0.08);
+}
+
+/* Editorial micro-interaction: smooth underline draw in action bronze */
+.hover-line {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #D49354;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-line:hover::after {
+  width: 100%;
+}
+
+/* Custom minimal scrollbar on dark canvas */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0E12;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(250, 247, 242, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D49354;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide native cursor over contextual editorial badge regions */
+@media (pointer: fine) {
+  [data-cursor] {
+    cursor: none !important;
+  }
+}
